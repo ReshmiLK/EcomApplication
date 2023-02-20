@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{%block body%}
+
+{%for c in carts%}
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-4">
+                {%if  c.product.image%}
+                <img class="card-img-top mb-5 mb-md-0" src="{{c.product.image.url}}" alt="..." / height="300px"></div>
+                {%else%}
+                <img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." / height="300px"></div>
+
+                {%endif%}
+            <div class="col-md-4">
+                <div class="small mb-1">SKU: BST-498</div>
+                <h1 class="display-5 fw-bolder">{{c.product.product_name}}</h1>
+                <div class="fs-5 mb-5">
+                    <span class="text-decoration-line-through">$45.00</span>
+                    <span>Rs{{c.product.price}}</span>
+                </div>
+            </div>
+            <div class="col-md-4" >
+                <a href="{%url 'create-order' c.id%}" class="btn btn-outline-info btn-sm">Place Order</a>
+                <a href="{%url 'cart-change' c.id%}" class="btn btn-outline-danger btn-sm">Cancel Order</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{%endfor%}
+
+{%endblock%}
+
